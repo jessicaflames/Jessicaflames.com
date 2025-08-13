@@ -131,7 +131,6 @@
       margin-bottom: 16px;
     }
 
-    /* Dynamic smooth fade effect for Welcome heading */
     .welcome-dynamic {
       font-family: 'Cinzel', serif;
       font-weight: 700;
@@ -155,16 +154,24 @@
     }
     .btn:hover { opacity: 0.9; }
 
+    /* Updated Gallery Styles */
     .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
     }
     .gallery img {
       width: 100%;
-      border-radius: 8px;
       height: auto;
-      display: block;
+      border-radius: 0;
+      object-fit: cover;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+    }
+    .gallery img.fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     footer {
@@ -177,7 +184,6 @@
       z-index: 3;
     }
 
-    /* MASSEUS AND ESCORT SERVICE shimmer */
     .fancy-title {
       font-family: 'Georgia', serif;
       font-weight: bold;
@@ -258,10 +264,8 @@
   <section>
     <h2>Gallery</h2>
     <div class="gallery">
-      <img src="https://via.placeholder.com/200x250?text=Photo+1" alt="Gallery photo 1">
-      <img src="https://via.placeholder.com/200x250?text=Photo+2" alt="Gallery photo 2">
-      <img src="https://via.placeholder.com/200x250?text=Photo+3" alt="Gallery photo 3">
-      <img src="https://via.placeholder.com/200x250?text=Photo+4" alt="Gallery photo 4">
+      <img src="IMG_6199.jpeg" alt="Showcase photo 1" class="fade-in">
+      <img src="IMG_6218.jpeg" alt="Showcase photo 2" class="fade-in">
     </div>
   </section>
 
@@ -282,6 +286,21 @@
 <footer>
   <p>&copy; 2025 Jessica Flames. All rights reserved.</p>
 </footer>
+
+<script>
+  // Smooth fade-in on scroll for gallery
+  const galleryImages = document.querySelectorAll('.gallery img');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  galleryImages.forEach(img => observer.observe(img));
+</script>
 
 </body>
 </html>

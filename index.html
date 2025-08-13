@@ -11,7 +11,7 @@
       color: #111;
       margin: 0;
       padding: 0;
-      background: gold; /* Full-page background */
+      background: gold;
     }
     header {
       background: #000000;
@@ -38,7 +38,7 @@
       max-width: 900px;
       margin: 48px auto;
       padding: 24px;
-      background: #e88f12; /* Body content area */
+      background: #e88f12;
       border-radius: 10px;
       box-shadow: 0 6px 20px rgba(0,0,0,0.1);
     }
@@ -76,6 +76,50 @@
       padding: 16px;
       margin-top: 48px;
     }
+
+    /* Fancy glowing + shimmer title */
+    .fancy-title {
+      font-family: 'Georgia', serif;
+      font-weight: bold;
+      font-size: 2.2em;
+      color: #FFD700;
+      background: linear-gradient(
+        90deg,
+        #FFD700 0%,
+        #FFF3B0 20%,
+        #FFD700 40%,
+        #FFD700 100%
+      );
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      position: relative;
+      animation: glowPulse 3s ease-in-out infinite, shimmer 4s linear infinite;
+    }
+    @keyframes glowPulse {
+      0%, 100% {
+        text-shadow: 0 0 8px rgba(255, 223, 0, 0.8),
+                     0 0 16px rgba(255, 223, 0, 0.6),
+                     0 0 24px rgba(255, 223, 0, 0.4);
+      }
+      50% {
+        text-shadow: 0 0 12px rgba(255, 223, 0, 1),
+                     0 0 20px rgba(255, 223, 0, 0.9),
+                     0 0 30px rgba(255, 223, 0, 0.7);
+      }
+    }
+    @keyframes shimmer {
+      0% { background-position: 200% center; }
+      100% { background-position: -200% center; }
+    }
+    .fancy-desc {
+      font-family: 'Georgia', serif;
+      font-style: italic;
+      font-size: 1.2em;
+      color: #fff3e0;
+      max-width: 700px;
+      margin: 0 auto;
+    }
   </style>
 </head>
 <body>
@@ -93,6 +137,14 @@
       Step into my world of elegance, charm, and unforgettable experiences.  
       I’m Jessica Flames, a refined and passionate companion offering discreet, luxurious encounters tailored to your desires.  
       Whether you seek stimulating conversation, a glamorous date night, or a weekend escape, I bring warmth, sophistication, and a touch of adventure.
+    </p>
+  </section>
+
+  <!-- New Masseus and Escort Service Section -->
+  <section style="text-align:center; margin-top:40px;">
+    <h2 class="fancy-title">MASSEUS AND ESCORT SERVICE</h2>
+    <p class="fancy-desc">
+      From sensual massages to unforgettable companionship, each experience is tailored to awaken your senses, ease your mind, and explore your desires in an intimate, luxurious escape.
     </p>
   </section>
 

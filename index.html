@@ -77,41 +77,52 @@
       margin-top: 48px;
     }
 
-    /* Fancy glowing + shimmer title */
+    /* Luxurious sensual shimmering + soft melting gold glow */
     .fancy-title {
       font-family: 'Georgia', serif;
       font-weight: bold;
-      font-size: 2.2em;
-      color: #FFD700;
+      font-size: 2.4em;
       background: linear-gradient(
         90deg,
-        #FFD700 0%,
-        #FFF3B0 20%,
-        #FFD700 40%,
-        #FFD700 100%
+        #000000 0%,
+        #444444 15%,
+        #FFD700 25%,
+        #FFF3B0 35%,
+        #FFD700 45%,
+        #444444 60%,
+        #000000 100%
       );
-      background-size: 200% auto;
+      background-size: 400% auto;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       position: relative;
-      animation: glowPulse 3s ease-in-out infinite, shimmer 4s linear infinite;
+      animation: shimmer 12s linear infinite, meltGlow 4s ease-in-out infinite;
     }
-    @keyframes glowPulse {
+
+    /* Slow shimmering sweep */
+    @keyframes shimmer {
+      0% { background-position: 400% center; }
+      100% { background-position: -400% center; }
+    }
+
+    /* Subtle pulsating "melting" inner glow */
+    @keyframes meltGlow {
       0%, 100% {
-        text-shadow: 0 0 8px rgba(255, 223, 0, 0.8),
-                     0 0 16px rgba(255, 223, 0, 0.6),
-                     0 0 24px rgba(255, 223, 0, 0.4);
+        text-shadow:
+          0 0 6px rgba(255, 215, 0, 0.4),
+          0 0 12px rgba(255, 223, 0, 0.3),
+          0 0 20px rgba(255, 215, 0, 0.2),
+          inset 0 0 8px rgba(255, 223, 0, 0.2);
       }
       50% {
-        text-shadow: 0 0 12px rgba(255, 223, 0, 1),
-                     0 0 20px rgba(255, 223, 0, 0.9),
-                     0 0 30px rgba(255, 223, 0, 0.7);
+        text-shadow:
+          0 0 12px rgba(255, 215, 0, 0.7),
+          0 0 24px rgba(255, 223, 0, 0.6),
+          0 0 36px rgba(255, 215, 0, 0.5),
+          inset 0 0 16px rgba(255, 223, 0, 0.3);
       }
     }
-    @keyframes shimmer {
-      0% { background-position: 200% center; }
-      100% { background-position: -200% center; }
-    }
+
     .fancy-desc {
       font-family: 'Georgia', serif;
       font-style: italic;
@@ -140,7 +151,7 @@
     </p>
   </section>
 
-  <!-- New Masseus and Escort Service Section -->
+  <!-- Masseus and Escort Service Section -->
   <section style="text-align:center; margin-top:40px;">
     <h2 class="fancy-title">MASSEUS AND ESCORT SERVICE</h2>
     <p class="fancy-desc">

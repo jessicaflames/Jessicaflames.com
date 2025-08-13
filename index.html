@@ -11,13 +11,38 @@
       color: #111;
       margin: 0;
       padding: 0;
-      background: gold;
+      background: linear-gradient(135deg, #0d0d0d 0%, #1a0f0a 40%, #4d3220 100%);
+      background-attachment: fixed;
+      position: relative;
+      overflow-x: hidden;
     }
+
+    /* Faint shimmering edge overlay */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      pointer-events: none;
+      background: radial-gradient(circle at top left, rgba(255, 215, 0, 0.08), transparent 40%),
+                  radial-gradient(circle at top right, rgba(255, 215, 0, 0.08), transparent 40%),
+                  radial-gradient(circle at bottom left, rgba(255, 215, 0, 0.08), transparent 40%),
+                  radial-gradient(circle at bottom right, rgba(255, 215, 0, 0.08), transparent 40%);
+      animation: shimmerEdges 12s ease-in-out infinite alternate;
+      z-index: 0;
+    }
+    @keyframes shimmerEdges {
+      0% { opacity: 0.2; }
+      50% { opacity: 0.35; }
+      100% { opacity: 0.2; }
+    }
+
     header {
       background: #000000;
       color: white;
       padding: 24px;
       text-align: center;
+      position: relative;
+      z-index: 1;
     }
     header h1 {
       margin: 0;
@@ -38,9 +63,11 @@
       max-width: 900px;
       margin: 48px auto;
       padding: 24px;
-      background: #e88f12;
+      background: rgba(232, 143, 18, 0.85);
       border-radius: 10px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+      position: relative;
+      z-index: 1;
     }
     h2 {
       text-align: center;
@@ -75,9 +102,11 @@
       text-align: center;
       padding: 16px;
       margin-top: 48px;
+      position: relative;
+      z-index: 1;
     }
 
-    /* Luxurious sensual shimmering + soft melting gold glow */
+    /* Fancy glowing + shimmer title */
     .fancy-title {
       font-family: 'Georgia', serif;
       font-weight: bold;
@@ -85,49 +114,37 @@
       background: linear-gradient(
         90deg,
         #000000 0%,
-        #444444 15%,
-        #FFD700 25%,
-        #FFF3B0 35%,
-        #FFD700 45%,
-        #444444 60%,
+        #444444 20%,
+        #000000 40%,
         #000000 100%
       );
-      background-size: 400% auto;
+      background-size: 200% auto;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       position: relative;
-      animation: shimmer 12s linear infinite, meltGlow 4s ease-in-out infinite;
+      animation: glowPulse 4s ease-in-out infinite, shimmer 8s linear infinite;
     }
-
-    /* Slow shimmering sweep */
-    @keyframes shimmer {
-      0% { background-position: 400% center; }
-      100% { background-position: -400% center; }
-    }
-
-    /* Subtle pulsating "melting" inner glow */
-    @keyframes meltGlow {
+    @keyframes glowPulse {
       0%, 100% {
-        text-shadow:
-          0 0 6px rgba(255, 215, 0, 0.4),
-          0 0 12px rgba(255, 223, 0, 0.3),
-          0 0 20px rgba(255, 215, 0, 0.2),
-          inset 0 0 8px rgba(255, 223, 0, 0.2);
+        text-shadow: 0 0 8px rgba(0, 0, 0, 0.7),
+                     0 0 16px rgba(68, 68, 68, 0.6),
+                     0 0 24px rgba(255, 215, 0, 0.4);
       }
       50% {
-        text-shadow:
-          0 0 12px rgba(255, 215, 0, 0.7),
-          0 0 24px rgba(255, 223, 0, 0.6),
-          0 0 36px rgba(255, 215, 0, 0.5),
-          inset 0 0 16px rgba(255, 223, 0, 0.3);
+        text-shadow: 0 0 12px rgba(0, 0, 0, 0.9),
+                     0 0 20px rgba(255, 215, 0, 0.8),
+                     0 0 30px rgba(255, 215, 0, 0.6);
       }
     }
-
+    @keyframes shimmer {
+      0% { background-position: 200% center; }
+      100% { background-position: -200% center; }
+    }
     .fancy-desc {
       font-family: 'Georgia', serif;
       font-style: italic;
       font-size: 1.2em;
-      color: #2a1f0d; /* Dark golden-tinted color for luxury */
+      color: #2e2e2e;
       max-width: 700px;
       margin: 0 auto;
     }

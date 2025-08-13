@@ -4,10 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Jessica Flames - Elite Companion</title>
-
-  <!-- Sacramento Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Cinzel:wght@700&display=swap" rel="stylesheet">
   <style>
     /* Background with center gold glow */
     body {
@@ -46,12 +43,9 @@
       background-size: 300% 300%;
       border-radius: 12px;
     }
-    body::after {
-      animation-delay: 2s;
-    }
-    .shimmer-frame {
-      animation-delay: 4s;
-    }
+    body::after { animation-delay: 2s; }
+    .shimmer-frame { animation-delay: 4s; }
+
     @keyframes edgeShimmer {
       0% { background-position: 300% 0; }
       100% { background-position: -300% 0; }
@@ -67,41 +61,46 @@
     }
     header h1 {
       margin: 0;
+      font-size: 3em;
       font-family: 'Sacramento', cursive;
-      font-size: 4em;
       font-weight: bold;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: linear-gradient(90deg, #FFD700 0%, #B8860B 50%, #FFD700 100%);
-      background-size: 200% auto;
+      background: linear-gradient(
+        90deg,
+        #000000 0%,
+        #444444 15%,
+        #FFD700 25%,
+        #FFF3B0 35%,
+        #FFD700 45%,
+        #444444 60%,
+        #000000 100%
+      );
+      background-size: 400% auto;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      animation: dimShimmer 6s ease-in-out infinite;
+      position: relative;
+      animation: shimmer 12s linear infinite, dimGlow 4s ease-in-out infinite;
     }
-
-    /* Dim shimmer for Jessica Flames */
-    @keyframes dimShimmer {
-      0%, 100% {
-        text-shadow: 0 0 6px rgba(255, 215, 0, 0.3), 0 0 12px rgba(255, 215, 0, 0.2);
-      }
-      50% {
-        text-shadow: 0 0 8px rgba(255, 215, 0, 0.4), 0 0 16px rgba(255, 215, 0, 0.3);
-      }
-    }
-
-    /* Flickering flame effect */
-    .flame {
-      font-size: 1.2em;
-      animation: flicker 1s infinite;
+    header h1::after {
+      content: "🔥";
+      font-size: 0.9em;
+      margin-left: 8px;
       display: inline-block;
+      animation: flicker 1s infinite alternate ease-in-out;
+      filter: drop-shadow(0 0 4px rgba(255,140,0,0.8));
+    }
+
+    @keyframes shimmer {
+      0% { background-position: 400% center; }
+      100% { background-position: -400% center; }
+    }
+    @keyframes dimGlow {
+      0%, 100% { text-shadow: 0 0 6px rgba(255, 215, 0, 0.3), 0 0 12px rgba(255, 223, 0, 0.2); }
+      50% { text-shadow: 0 0 12px rgba(255, 215, 0, 0.5), 0 0 20px rgba(255, 223, 0, 0.4); }
     }
     @keyframes flicker {
-      0%   { transform: translateY(0) rotate(0deg); filter: drop-shadow(0 0 3px orange); }
-      25%  { transform: translateY(-1px) rotate(-2deg); filter: drop-shadow(0 0 4px gold); }
-      50%  { transform: translateY(0) rotate(1deg); filter: drop-shadow(0 0 5px orangered); }
-      75%  { transform: translateY(-1px) rotate(2deg); filter: drop-shadow(0 0 4px orange); }
-      100% { transform: translateY(0) rotate(-1deg); filter: drop-shadow(0 0 3px gold); }
+      0% { transform: translateY(0) rotate(0deg) scale(1); opacity: 1; }
+      50% { transform: translateY(-1px) rotate(-2deg) scale(1.05); opacity: 0.9; }
+      100% { transform: translateY(0) rotate(1deg) scale(1); opacity: 1; }
     }
 
     header p {
@@ -115,6 +114,7 @@
       margin-top: 16px;
       border-radius: 8px;
     }
+
     .container {
       max-width: 900px;
       margin: 48px auto;
@@ -125,10 +125,25 @@
       position: relative;
       z-index: 3;
     }
+
     h2 {
       text-align: center;
       margin-bottom: 16px;
     }
+
+    /* Dynamic smooth fade effect for Welcome heading */
+    .welcome-dynamic {
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+      color: black;
+      animation: fadeWelcome 5s ease-in-out infinite;
+      letter-spacing: 2px;
+    }
+    @keyframes fadeWelcome {
+      0%, 100% { opacity: 0; }
+      20%, 80% { opacity: 1; }
+    }
+
     .btn {
       display: inline-block;
       padding: 12px 24px;
@@ -138,9 +153,8 @@
       border-radius: 5px;
       font-weight: bold;
     }
-    .btn:hover {
-      opacity: 0.9;
-    }
+    .btn:hover { opacity: 0.9; }
+
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -152,6 +166,7 @@
       height: auto;
       display: block;
     }
+
     footer {
       background: #000000;
       color: white;
@@ -162,7 +177,7 @@
       z-index: 3;
     }
 
-    /* Keep original fancy-title animation */
+    /* MASSEUS AND ESCORT SERVICE shimmer */
     .fancy-title {
       font-family: 'Georgia', serif;
       font-weight: bold;
@@ -180,28 +195,16 @@
       background-size: 400% auto;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      position: relative;
       animation: shimmer 12s linear infinite, meltGlow 4s ease-in-out infinite;
-    }
-    @keyframes shimmer {
-      0% { background-position: 400% center; }
-      100% { background-position: -400% center; }
     }
     @keyframes meltGlow {
       0%, 100% {
-        text-shadow:
-          0 0 6px rgba(255, 215, 0, 0.4),
-          0 0 12px rgba(255, 223, 0, 0.3),
-          0 0 20px rgba(255, 215, 0, 0.2);
+        text-shadow: 0 0 6px rgba(255, 215, 0, 0.4), 0 0 12px rgba(255, 223, 0, 0.3);
       }
       50% {
-        text-shadow:
-          0 0 12px rgba(255, 215, 0, 0.7),
-          0 0 24px rgba(255, 223, 0, 0.6),
-          0 0 36px rgba(255, 215, 0, 0.5);
+        text-shadow: 0 0 12px rgba(255, 215, 0, 0.7), 0 0 24px rgba(255, 223, 0, 0.6);
       }
     }
-
     .fancy-desc {
       font-family: 'Georgia', serif;
       font-style: italic;
@@ -217,14 +220,14 @@
 <div class="shimmer-frame"></div>
 
 <header>
-  <h1>Jessica Flames <span class="flame">🔥</span></h1>
+  <h1>Jessica Flames</h1>
   <p>Companionship & Therapeutic Bodywork</p>
   <img src="IMG_6198.jpeg" alt="Jessica Flames">
 </header>
 
 <div class="container">
   <section>
-    <h2>Welcome</h2>
+    <h2 class="welcome-dynamic">WELCOME</h2>
     <p>
       Step into my world of elegance, charm, and unforgettable experiences.  
       I’m Jessica Flames, a refined and passionate companion offering discreet, luxurious encounters tailored to your desires.  
@@ -264,9 +267,7 @@
 
   <section id="contact">
     <h2>Contact Me</h2>
-    <p>
-      For inquiries, bookings, or a discreet introduction, please reach out through any of my secure channels below:  
-    </p>
+    <p>For inquiries, bookings, or a discreet introduction, please reach out through any of my secure channels below:</p>
     <ul>
       <li>Email: <a href="mailto:jessicaflames939@gmail.com">jessicaflames939@gmail.com</a></li>
       <li>Zangi: <a href="https://services.zangi.com/dl/conversation/1062348090" target="_blank">Chat on Zangi</a></li>

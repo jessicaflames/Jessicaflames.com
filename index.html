@@ -5,58 +5,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Jessica Flames - Elite Companion</title>
   <style>
+    /* Background with center gold glow */
     body {
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       line-height: 1.5;
       color: #111;
       margin: 0;
       padding: 0;
-      background: radial-gradient(circle at center, #1a1a1a, #000000 80%);
+      background: radial-gradient(circle at center, rgba(255,215,0,0.3) 0%, rgba(0,0,0,1) 80%);
       position: relative;
       overflow-x: hidden;
     }
 
-    /* Triple shimmering edge animation */
-    body::before, body::after, body::backdrop {
-      content: "";
+    /* Triple rolling shimmer edges */
+    body::before,
+    body::after,
+    .shimmer-frame {
+      content: '';
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       pointer-events: none;
-      z-index: 1;
-    }
-
-    body::before {
-      background: linear-gradient(120deg, rgba(255,215,0,0.6) 0%, transparent 40%, rgba(255,215,0,0.6) 80%);
+      z-index: 2;
+      border: 8px solid transparent;
+      box-sizing: border-box;
+      animation: edgeShimmer 6s linear infinite;
+      background: linear-gradient(90deg,
+        rgba(255,215,0,0.8),
+        rgba(255,255,255,0.2),
+        rgba(255,215,0,0.8),
+        rgba(255,255,255,0.2),
+        rgba(255,215,0,0.8)
+      );
       background-size: 300% 300%;
-      animation: edgeShimmer1 8s linear infinite;
+      border-radius: 12px;
     }
-
     body::after {
-      background: linear-gradient(240deg, rgba(255,215,0,0.6) 0%, transparent 40%, rgba(255,215,0,0.6) 80%);
-      background-size: 300% 300%;
-      animation: edgeShimmer2 8s linear infinite;
+      animation-delay: 2s;
     }
-
-    body::backdrop {
-      background: linear-gradient(360deg, rgba(255,215,0,0.6) 0%, transparent 40%, rgba(255,215,0,0.6) 80%);
-      background-size: 300% 300%;
-      animation: edgeShimmer3 8s linear infinite;
+    .shimmer-frame {
+      animation-delay: 4s;
     }
-
-    @keyframes edgeShimmer1 {
+    @keyframes edgeShimmer {
       0% { background-position: 300% 0; }
       100% { background-position: -300% 0; }
-    }
-    @keyframes edgeShimmer2 {
-      0% { background-position: -300% 0; }
-      100% { background-position: 300% 0; }
-    }
-    @keyframes edgeShimmer3 {
-      0% { background-position: 0 300%; }
-      100% { background-position: 0 -300%; }
     }
 
     header {
@@ -65,7 +59,7 @@
       padding: 24px;
       text-align: center;
       position: relative;
-      z-index: 2;
+      z-index: 3;
     }
     header h1 {
       margin: 0;
@@ -86,11 +80,11 @@
       max-width: 900px;
       margin: 48px auto;
       padding: 24px;
-      background: #e88f12;
+      background: rgba(232,143,18,0.9);
       border-radius: 10px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.6);
       position: relative;
-      z-index: 2;
+      z-index: 3;
     }
     h2 {
       text-align: center;
@@ -126,7 +120,7 @@
       padding: 16px;
       margin-top: 48px;
       position: relative;
-      z-index: 2;
+      z-index: 3;
     }
 
     /* Luxurious sensual shimmering + soft melting gold glow */
@@ -155,7 +149,6 @@
       0% { background-position: 400% center; }
       100% { background-position: -400% center; }
     }
-
     @keyframes meltGlow {
       0%, 100% {
         text-shadow:
@@ -172,7 +165,6 @@
           inset 0 0 16px rgba(255, 223, 0, 0.3);
       }
     }
-
     .fancy-desc {
       font-family: 'Georgia', serif;
       font-style: italic;
@@ -184,6 +176,8 @@
   </style>
 </head>
 <body>
+
+<div class="shimmer-frame"></div>
 
 <header>
   <h1>Jessica Flames</h1>
